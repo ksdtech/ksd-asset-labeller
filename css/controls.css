@@ -1,0 +1,90 @@
+body {
+    background-color: #d6d6d6;
+    font-family: ‘Arial’, Gadget, sans-serif;
+    font-size: 12pt;
+}
+
+#printArea {
+    width: 8.5in;
+    padding-bottom:.5in;
+    background-color: white;
+}
+.ksdLabel {
+    /*background-color: #f3f3f3;*/
+}
+.ksdLabel:hover {
+    background-color: #d6d6d6;
+}
+
+
+#controls {
+    box-sizing:border-box;
+    margin-bottom: 1em;
+    padding: .5em;
+    background-color: #ddebf1;
+    border-radius: 6px;
+    width: 8.5in;
+}
+
+#controllers {
+    display: flex;
+    flex-direction: row;
+    /*justify-content: right;*/
+    align-items: top;
+}
+#controllers > div {
+    margin-right: 1em;
+}
+
+#printingNotes {
+    margin-left: 1em;
+}
+#printingNotes h2 {
+    font-size: 1.1em;
+    margin-top: .2em;
+    margin-bottom: .2em;
+}
+#printingNotes ul {
+    margin-top: .5em;
+    margin-bottom: .2em;
+}
+
+fieldset {
+    border-radius: 4px;
+    border: 2px solid #b5b5b5;
+}
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea, select, button {
+    margin-top: .5em;
+    margin-left: 1em;
+    display: block;    
+}
+
+textarea {
+    border-radius: 2px;
+    border: 1px solid #929292;
+    padding: .5em .75em;
+    width: 30em;
+    height: 8em;
+}
+textarea, select {
+    font-size: .8em;
+}
+select {
+    width: 20em;
+}
+#labelType {
+    height: 5em;    
+}
+label {
+    display: block;
+    margin-top: .5em;
+}
+label > span {
+    font-size: .75em;
+    color: #a2a2a2;
+}

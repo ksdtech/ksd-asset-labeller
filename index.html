@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>KSD Asset Labeller</title>
+
+    <!-- <style type="text/css"></style> -->
+    <link rel="stylesheet" href="css/controls.css" media="screen">
+    <!-- <link rel="stylesheet" href="css/controls.css" media="print"> -->
+    <link rel="stylesheet" href="css/labels.css" media="screen">
+    <link rel="stylesheet" href="css/labels.css" media="print">
+
+    <script type="text/javascript" src="lib/qrcode.min.js"></script>
+    <script type="text/javascript" src="lib/papaparse.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <script type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="controls">
+        <form action="" method="post">
+            <fieldset>
+                <legend>Label Settings</legend>
+
+                <div id="controllers">
+                    <div>
+                        <label for="csvData">CSV Data: <span>Tag,Name,Site</span></label>
+                        <textarea id="csvData" name="csv_data" placeholder="Tag,Name,Site" autofocus></textarea>
+                    </div>
+
+                    <div>
+                        <label for="labelType">Label Type:</label>
+                        <select id="labelType" name="label_type" size=4>
+                            <option value="OL775LP">OL775LP (Large)</option>
+                            <option value="OL875LP" selected>OL875LP (Small)</option>
+                            <option value="OL75LP">OL75LP (Wide)</option>
+                        </select>
+                        <label for="h1Size">Primary Text Size:</label>
+                        <select id="h1Size" name="h1_size">
+                            <option value="textLargest">Largest</option>
+                            <option value="textLarger" selected>Larger</option>
+                            <option value="textLarge">Large</option>
+                            <option value="textNormal">Normal</option>
+                            <option value="textSmaller">Smaller</option>
+                            <option value="textSmallest">Smallest</option>
+                        </select>
+                        <label>Enable Testing View: <input type="checkbox" name="testing"></label>
+                    </div>
+                </div>
+
+                <button id="renderLabels" type="submit">Render Labels</button>
+
+            </fieldset>
+        </form>
+        <div id="printingNotes">
+            <h2>When printing, keep in mind:</h2>
+            <ul>
+                <li>In Chrome, be sure the paper size is <strong>8.5 x 11</strong>, and <strong>Margins</strong> should be set to <strong>Default</strong>.</li>
+                <li>In Firefox, be sure to select <strong>Print background colors</strong>, and probably remove the headers.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div id="printArea" class="labelArea"></div>
+
+</body>
+</html>

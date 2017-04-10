@@ -1,0 +1,286 @@
+/* This may not work on Safari. */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/@page */
+@page {
+    margin: 0in; /* Remove any default printer margins. */
+}
+
+@media print {
+    /* Each label type needs to handle its own margins. */
+    body {
+        margin: 0in;
+        padding: 0in;
+    }
+
+    #controls {
+        display: none;
+    }
+
+    .placeholder h1 {
+        color: white !important;
+    }
+}
+
+.labelIndex {
+    display: none;
+}
+
+/* For testing. */
+.testing .ksdLabel {
+    background-color: #f3f3f3;
+}
+.testing .labelIndex {
+    display: inline;
+}
+
+.placeholder h1 {
+    color: #e0e0e0;
+}
+
+.textLargest h1 {
+    font-size: 3.5em;
+}
+.textLarger h1 {
+    font-size: 2.7em;
+}
+.textLarge h1 {
+    font-size: 2.3em;
+}
+.textNormal h1 {
+}
+.textSmaller h1 {
+    font-size: 1.5em;
+}
+.textSmallest h1 {
+    font-size: 1em;
+}
+
+
+.labelArea {
+    font-family: ‘Arial Black’, Gadget, sans-serif;
+    font-size: 12pt;
+    /*outline: 1px dotted;*/ /* Outline doesn't take up space like border. */
+}
+.labelArea > div {
+    /* 
+    Instead of having flexbox seet on label area, we'll just make the 
+    labels inline-blocks. This allows us to define page-break-after 
+    on, for example, each 30th label. Page breaks don't work on flex 
+    boxes, apparently. http://stackoverflow.com/a/42806935
+    */
+    display: inline-block; 
+    /*page-break-inside:avoid;*/
+}
+
+.ksdLabel {
+    -webkit-print-color-adjust: exact; /* Print background color. */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.labelExample {
+    outline: 1px dotted;
+    outline-color: #B5B5B5;
+}
+
+.ksdLabel h1, p {
+    margin: 0in;
+    -webkit-font-variant-ligatures: no-common-ligatures;
+    font-variant-ligatures: no-common-ligatures;
+}
+.ksdLabel h1 {
+    letter-spacing: 0.02em;
+}
+
+.qrcode img {
+/*    width: .35in;
+    height: .35in;*/
+    width: 2em;
+    height: 2em;
+}
+.stripes {
+    font-size: 8pt;
+    letter-spacing: 0.2em;
+    padding: .045in;
+    padding-left: .25in;
+    padding-right: .25in;
+    -webkit-print-color-adjust: exact; /* Print background color. */
+}
+
+.top {
+    text-align: center;
+} /* No special style yet. */
+
+.labelBody {
+    padding-left: .15in;
+    padding-right: .15in;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.labelArt {
+    /*margin: auto;
+    padding-right: .15in;*/
+}
+/* Don't display the image for most labels. */
+.labelArt img {
+    display: none;
+}
+
+
+/*
+OL775LP - The Large Labels.
+15 Labels Per Sheet
+Width:  2.675"
+Height: 2"
+Top Margin: 0.25"
+Bottom Margin:  0.25"
+Left Margin:    0.1625"
+Right Margin:   0.1625"
+Horizontal Spacing: 0.075"
+Vertical Spacing:   0.125"
+Horizontal Pitch:   2.75"
+Vertical Pitch: 2.125"
+*/
+.OL775LP .ksdLabel {
+    min-width: 2.675in;
+    max-width: 2.675in;
+    min-height: 2in;
+    max-height: 2in;
+    margin-right: 0.075in; /* Horizontal spacing */
+    margin-bottom: 0.125in; /* Vertical spacing */
+    border-radius: .15in;
+}
+/* Top margin in 1st and every 16th label. */
+.OL775LP > div:nth-child(15n+1) { 
+    margin-top: .25in;
+}
+/* Margin on the left edge. */
+.OL775LP > div:nth-child(3n+1) {
+    /*margin-left: 0.21in;*/
+    margin-left: 0.1625in;
+}
+/* 3 labels per line; last label on line shouldn't have a right margin. */
+.OL775LP > div:nth-child(3n+3) .ksdLabel {
+    margin-right: 0in;
+}
+/* Page breaks after ever 15th label. */
+.OL775LP > div:nth-child(15n) { 
+    page-break-after: always;
+}
+/* End of layout section. */
+.OL775LP .labelBody {
+    display: flex;
+    flex-direction: column;
+    flex: 2; /* Consume entire middle. */
+    justify-content: space-around;
+    /*align-items: center;*/
+}
+.OL775LP .labelVisuals {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    /*align-items: center;*/
+}
+/* This is where the image will be displayed. Work on the padding of the layout.*/
+.OL775LP .labelArt img {
+    display: block;
+    height: .75in;
+}
+.OL775LP h1 {
+    /*font-size: 3.5em;*/
+}
+
+
+/*
+OL875LP - The Small Labels.
+30 Labels Per Sheet
+Width:  2.5935" 
+Height: 1"
+Top Margin: 0.5"
+Bottom Margin:  0.5"
+Left Margin:    0.2198" 
+Right Margin:   0.2198"
+Horizontal Spacing: 0.14"
+Vertical Spacing:   0"
+Horizontal Pitch:   2.7335"
+Vertical Pitch: 1"
+*/
+.OL875LP .ksdLabel {
+    min-width: 2.5935in;
+    max-width: 2.5935in;
+    min-height: 1in;
+    max-height: 1in;
+    /*margin-right: 0.14in;*/
+    margin-right: 0.15in; /* Horizontal spacing */
+    border-radius: .15in;
+}
+/* Top margin in 1st and every 30th label. */
+.OL875LP > div:nth-child(30n+1) { 
+    margin-top: .5in;
+}
+/* Margin on the left edge. */
+.OL875LP > div:nth-child(3n+1) {
+    /*margin-left: 0.21in;*/
+    margin-left: 0.20in;
+}
+/* 3 labels per line; last label on line shouldn't have a right margin. */
+.OL875LP > div:nth-child(3n+3) .ksdLabel {
+    margin-right: 0in;
+}
+/* Page breaks after ever 30th label. */
+.OL875LP > div:nth-child(30n) { 
+    page-break-after: always;
+}
+
+
+/*
+OL75LP - The Wide Labels.
+20 Labels Per Sheet
+Width:  4"
+Height: 1"
+Top Margin: 0.5"
+Bottom Margin:  0.5"
+Left Margin:    0.175"
+Right Margin:   0.175"
+Horizontal Spacing: 0.1562"
+Vertical Spacing:   0"
+Horizontal Pitch:   4.1562"
+Vertical Pitch: 1"
+*/
+.OL75LP .ksdLabel {
+    min-width: 4in;
+    max-width: 4in;
+    min-height: 1in;
+    max-height: 1in;
+    margin-right: 0.16in; /* Horizontal spacing */
+    border-radius: .08in;
+}
+/* Top margin in 1st and every 20th label. */
+.OL75LP > div:nth-child(20n+1) { 
+    margin-top: .5in;
+}
+/* Margin on the left edge. */
+.OL75LP > div:nth-child(2n+1) {
+    /*margin-left: 0.21in;*/
+    margin-left: 0.17in;
+}
+/* 2 labels per line; last label on line shouldn't have a right margin. */
+.OL75LP > div:nth-child(2n+2) .ksdLabel {
+    margin-right: 0in;
+}
+/* Page breaks after ever 20th label. */
+.OL75LP > div:nth-child(20n) { 
+    page-break-after: always;
+}
+
