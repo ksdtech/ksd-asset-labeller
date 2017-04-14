@@ -1,0 +1,18 @@
+@media print {
+    /* Each label type needs to handle its own margins. */
+    #mountainHolder {
+        display: none;
+    }
+}
+
+#mountainHolder {
+    margin-top: .2in;
+}
+
+#mountainHolder > img {
+    display: none;
+}
+
+#mountainHolder > canvas {
+    background-color: white;
+}

@@ -92,6 +92,9 @@
     letter-spacing: 0.02em;
 }
 
+.qrcode {
+    padding-left: .04in;
+}
 .qrcode img {
 /*    width: .35in;
     height: .35in;*/
@@ -126,12 +129,14 @@
     justify-content: space-between;
 }
 
-.labelArt {
-    /*margin: auto;
-    padding-right: .15in;*/
+/* 
+    Don't display the image for most labels. The img will be revealed 
+    for large labels, but the canvas will always be hidden.
+ */
+.labelArt img, .labelArt canvas {
+    display: none;
 }
-/* Don't display the image for most labels. */
-.labelArt img {
+#imageHolder {
     display: none;
 }
 
@@ -181,7 +186,8 @@ Vertical Pitch: 2.125"
     display: flex;
     flex-direction: column;
     flex: 2; /* Consume entire middle. */
-    justify-content: space-around;
+    /*justify-content: space-around;*/
+    justify-content: space-between;
     /*align-items: center;*/
 }
 .OL775LP .labelVisuals {
@@ -195,7 +201,9 @@ Vertical Pitch: 2.125"
 /* This is where the image will be displayed. Work on the padding of the layout.*/
 .OL775LP .labelArt img {
     display: block;
-    height: .75in;
+    /*height: .75in;*/
+    max-width: 2in;
+    max-height: .75in;
 }
 .OL775LP h1 {
     /*font-size: 3.5em;*/

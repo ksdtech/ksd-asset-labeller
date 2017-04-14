@@ -7,7 +7,10 @@ function labelTemplate(asset, labelIndex) {
             <h1 class="labelName">${asset[1].trim()}</h1>
             <div class="labelVisuals">
                 <div class="labelArt">
-                    <img src="aps_HyperDither.png" />
+                    <!-- <img src="aps_HyperDither.png" /> -->
+                    <!-- <img src="Rainy-Woodlands_04.png" /> -->
+                    <!-- <canvas class="artCanvas" width="190" height="72"></canvas> -->
+                    <img src="" />
                 </div>
                 <div id="qrcode_${asset[0].trim()}" class="qrcode" data-asset-tag="${asset[0].trim()}"></div>
             </div>
@@ -106,6 +109,9 @@ function renderLabels() {
             correctLevel: QRCode.CorrectLevel.M
         });
     });
+
+    // Draw the mountain scene for large labels.
+    MountainScene.drawArtToIMGs(document.querySelectorAll('.labelArt > img'));
 }
 
 window.dGO = {

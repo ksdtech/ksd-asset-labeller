@@ -14,8 +14,28 @@
     <script type="text/javascript" src="lib/qrcode.min.js"></script>
     <script type="text/javascript" src="lib/papaparse.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/MountainScene.js"></script>
+    <link rel="stylesheet" href="css/MountainScene.css" media="all">
 
-    <script type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+
+// Launch when DOM is ready.
+function whenDocumentIsReady(fn) {
+    if (document.readyState != 'loading'){
+        fn();
+    } else {
+        document.addEventListener('DOMContentLoaded', fn);
+    }
+}
+
+whenDocumentIsReady(function() {
+
+    MountainScene.initialize('mountainHolder');
+    // createMountainHolder('mountainHolder');
+
+});
+
+    </script>
 </head>
 
 <body>
@@ -63,6 +83,16 @@
         </div>
 
     </div>
+
+    <div id="imageHolder">
+        <img id="cloudyMountain" src="Cloudy_Mountain.png" />
+        <img id="cloud01" src="Cloud_01.png" />
+        <img id="cloud02" src="Cloud_02.png" />
+    </div>
+
+    <!-- <canvas id="canvas" width="190" height="72"></canvas> -->
+
+    <!-- <button id="renderMountains">Render Mountains</button> -->
 
     <div id="printArea" class="labelArea"></div>
 
