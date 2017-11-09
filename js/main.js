@@ -17,7 +17,7 @@ function labelTemplate(asset, labelIndex) {
         </div>
         <div class="stripes bottom">
             <p>${asset[2].trim()}<span class="labelIndex"> - ${labelIndex}</span></p>
-            <p>${asset[0].trim()}</p>
+            <p class="assetTag">${asset[0].trim()}</p>
         </div>
     </div>`
 };
@@ -161,6 +161,25 @@ whenDocumentIsReady(function() {
             window.dGO.printArea.classList.remove('testing');
         }
     }, false);
+
+    document.querySelector('input[name="no-asset-tags"]').addEventListener("change", function (event) {
+        if (event.currentTarget.checked) {
+            Array.prototype.forEach.call(document.querySelectorAll('.qrcode'), function(el, i){
+                el.classList.add('hidden');
+            });
+            Array.prototype.forEach.call(document.querySelectorAll('.assetTag'), function(el, i){
+                el.classList.add('hidden');
+            });
+        } else {
+            Array.prototype.forEach.call(document.querySelectorAll('.qrcode'), function(el, i){
+                el.classList.remove('hidden');
+            });
+            Array.prototype.forEach.call(document.querySelectorAll('.assetTag'), function(el, i){
+                el.classList.remove('hidden');
+            });
+        }
+    }, false);
+
 
     document.getElementById('renderLabels').addEventListener("click", function (event) {
         event.stopPropagation();
